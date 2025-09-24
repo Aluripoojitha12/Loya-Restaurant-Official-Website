@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="contact.css" />
+</head>
+<body>
+
+  <!-- ================= HERO (pure video background) ================= -->
+  <section id="hero" class="hero" aria-label="Contact hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="assets/contact-video.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-inner">
+      <h1 class="hero-title">Contact Us</h1>
+      <p class="hero-sub">We’d love to hear from you</p>
+    </div>
+  </section>
+
+  <!-- ================ CONTACT (CARD LAYOUT) ================ -->
+  <section id="contact" class="contact section" aria-labelledby="contactTitle">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Get in touch</p>
+        <h2 id="contactTitle" class="title">Say hello to our team</h2>
+        <p class="lead">Reservations, events, feedback — drop us a note and we’ll reply shortly.</p>
+      </header>
+
+      <div class="contact-grid">
+        <!-- Left: Image Card -->
+        <figure class="contact-media" aria-hidden="true">
+          <img src="assets/contact-loya-img.jpg" alt="" />
+        </figure>
+
+        <!-- Right: Form Card -->
+        <div class="contact-card">
+          <form id="contactForm" class="contact-form" novalidate aria-label="Contact form">
+            <div class="grid-2">
+              <label class="field">
+                <span>Name</span>
+                <input id="name" type="text" name="name" placeholder="Your full name" autocomplete="name" />
+                <small class="err" data-for="name"></small>
+              </label>
+
+              <label class="field">
+                <span>Email</span>
+                <input id="email" type="email" name="email" placeholder="you@example.com" inputmode="email" autocomplete="email" />
+                <small class="err" data-for="email"></small>
+              </label>
+            </div>
+
+            <div class="grid-2">
+              <label class="field">
+                <span>Phone</span>
+                <div class="phone-wrap">
+                  <select id="code" name="country_code" aria-label="Country code">
+                    <option value="" selected>Code</option>
+                    <option value="+353">+353 (Ireland)</option>
+                    <option value="+91">+91 (India)</option>
+                    <option value="+44">+44 (UK)</option>
+                    <option value="+1">+1 (USA/Canada)</option>
+                    <option value="+61">+61 (Australia)</option>
+                    <option value="+971">+971 (UAE)</option>
+                  </select>
+                  <input id="phone" type="tel" name="phone" placeholder="98765 43210" inputmode="tel" autocomplete="tel-national" />
+                </div>
+                <small class="err" data-for="phone"></small>
+              </label>
+
+              <label class="field">
+                <span>Subject</span>
+                <input id="subject" type="text" name="subject" placeholder="Reservation / Enquiry" />
+                <small class="err" data-for="subject"></small>
+              </label>
+            </div>
+
+            <label class="field">
+              <span>Message</span>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us a bit about your enquiry"></textarea>
+              <small class="err" data-for="message"></small>
+            </label>
+
+            <label class="field field-consent">
+              <input id="consent" type="checkbox" name="consent" />
+              <span>I agree to be contacted regarding my enquiry.</span>
+            </label>
+            <small class="err" data-for="consent"></small>
+
+            <button type="submit" class="btn-primary" aria-label="Submit contact form">Send Message</button>
+
+            <!-- live region for summary -->
+            <div id="formErrors" class="form-errors" aria-live="polite"></div>
+          </form>
+
+          <div class="contact-details" aria-label="Contact details">
+            <ul class="list">
+              <li><strong>Address:</strong> Main Street, Dunboyne, Co. Meath, A86 E048</li>
+              <li><strong>Phone:</strong> <a href="tel:+3530000000">+353 00 000 000</a></li>
+              <li><strong>Email:</strong> <a href="mailto:hello@example.com">hello@example.com</a></li>
+              <li><strong>Hours:</strong> Mon–Sun, 12:00 – 23:00</li>
+            </ul>
+
+            <div class="social" aria-label="Social media">
+              <a class="social-link" href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.51 5.51 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6.2a1 1 0 1 1-1 1 1 1 0 0 1 1-1z" fill="currentColor"/>
+                </svg>
+              </a>
+
+              <a class="social-link" href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path d="M13 22v-8h3l1-4h-4V8c0-1.1.9-2 2-2h2V2h-3a5 5 0 0 0-5 5v3H6v4h3v8z" fill="currentColor"/>
+                </svg>
+              </a>
+
+              <a class="social-link" href="#" aria-label="Twitter">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path d="M3 3h4.6l5.1 7.1L18.7 3H21l-7 9.6L21.5 21H17l-5.5-7.7L5.3 21H3l7.7-10.6L3 3zm4.7 1.5L18 19.4h2.3L10 4.5H7.7z" fill="currentColor"/>
+                </svg>
+              </a>
+
+              <a class="social-link" href="#" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.5 12 3.5 12 3.5s-7.6 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.6 9.4.6 9.4.6s7.6 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.7 15.5v-7l6 3.5-6 3.5z" fill="currentColor"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div><!-- /contact-grid -->
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <small>© <span id="y"></span> Your Restaurant. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <!-- Keep your JS validations in this file -->
+  <script src="contact.js"></script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

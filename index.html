@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loya Restaurant — Home</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles.css?v=5" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+    <div class="container-fluid px-3">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#hero">
+        <img src="assets/Logo.png" alt="Loya Restaurant" class="logo-img" />
+      </a>
+
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks"
+              aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div id="navLinks" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+          <li class="nav-item">
+  <a class="nav-link" href="contact.html">Contact Us</a>
+</li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero d-flex align-items-center text-white"
+           style="
+             background-image:
+               linear-gradient(rgba(0,0,0,.0), rgba(0,0,0,.0)),
+               url('assets/hero-bg.jpg');
+             background-size:cover;
+             background-position:center;
+             background-repeat:no-repeat;">
+    <div class="container-fluid text-center">
+      <div class="hero-rotator" aria-live="polite">
+        <div class="hero-slide active" role="group" aria-roledescription="slide" aria-label="1 of 3">
+          <div class="hero-slide__inner">
+            <h1 class="display-4 fw-bold">Welcome to Loya Restaurant: Tradition Meets Today</h1>
+            <p class="lead">
+              At Loya Restaurant, we combine family recipes with contemporary flavors, creating dishes that honor our roots while offering a fresh, modern dining experience you’ll always remember.
+            </p>
+          </div>
+        </div>
+        <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+          <div class="hero-slide__inner">
+            <h1 class="display-4 fw-bold">Loya Restaurant Brings Freshness to Every Plate</h1>
+            <p class="lead">
+              From crisp garden produce to hand-ground spices, Loya Restaurant is committed to sourcing the finest ingredients, ensuring each meal bursts with authentic taste and uncompromising quality.
+            </p>
+          </div>
+        </div>
+        <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+          <div class="hero-slide__inner">
+            <h1 class="display-4 fw-bold">Dine In, Takeaway, or Delivery — Loya Restaurant Has You Covered</h1>
+            <p class="lead">
+              Whether you’re relaxing at home, grabbing food on the go, or celebrating with friends, Loya Restaurant makes it easy to enjoy your favorites with seamless service every time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMING SOON -->
+  <section id="coming-soon" class="coming-soon text-white" aria-labelledby="comingSoonTitle">
+    <div class="container text-center">
+      <h2 id="comingSoonTitle" class="coming-title">
+        Loya Restaurant — Something Delicious is Coming Soon
+      </h2>
+      <p class="coming-subtitle">
+        We’re preparing a fresh seasonal experience. Stay tuned for the launch!
+      </p>
+
+      <div class="coming-countdown" role="timer" aria-live="polite"
+           data-target="2025-12-01T12:00:00+05:30">
+        <div class="time-box">
+          <div class="time-value" id="cd-days">–</div>
+          <div class="time-label">Days</div>
+        </div>
+        <div class="time-box">
+          <div class="time-value" id="cd-hours">–</div>
+          <div class="time-label">Hours</div>
+        </div>
+        <div class="time-box">
+          <div class="time-value" id="cd-mins">–</div>
+          <div class="time-label">Minutes</div>
+        </div>
+        <div class="time-box">
+          <div class="time-value" id="cd-secs">–</div>
+          <div class="time-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR DISHES (auto-sliding + arrows + floating decors) -->
+<section id="popular" class="section popular text-white" aria-labelledby="popularTitle">
+  <div class="container">
+
+    <header class="text-center mb-4">
+      <h2 id="popularTitle" class="section-title no-bar text-white d-inline-block">
+        Popular Dishes
+      </h2>
+      <p class="popular-subtitle mb-0">Taste the joy—chef’s favorites, loved by regulars.</p>
+    </header>
+
+    <!-- floating decor shapes -->
+    <img class="popular-decor decor-top-right tomato" src="assets/decors/Tomato.png" alt="" aria-hidden="true">
+    <img class="popular-decor decor-bottom-left chilli" src="assets/decors/chilli.png" alt="" aria-hidden="true">
+
+    <!-- Scroller -->
+    <div class="popular-scroller" aria-label="Popular dishes carousel">
+      <!-- NOTE: arrows removed from here -->
+      <div class="popular-track">
+        <!-- 10 cards -->
+        <article class="dish-card">
+          <div class="dish-media">
+            <img src="assets/dishes/Chilli Chicken.png" alt="Chilli Chicken" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <div class="dish-rating" aria-label="Rating 4.5 out of 5"><span class="star">★</span><span class="rating-num">4.5</span></div>
+            <h3 class="dish-title">CHILLI CHICKEN</h3>
+            <p class="dish-desc">Spicy stir-fried chicken with bell peppers.</p>
+            <span class="badge-hurry">Hurry up</span>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="dish-media">
+            <img src="assets/dishes/Chicken Lollipop.png" alt="Chicken Lollipop" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <div class="dish-rating" aria-label="Rating 5 out of 5"><span class="star">★</span><span class="rating-num">5</span></div>
+            <h3 class="dish-title">CHICKEN LOLLIPOP</h3>
+            <p class="dish-desc">Crispy fried chicken lollipops with tangy sauce.</p>
+            <span class="badge-hurry">Hurry up</span>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="dish-media">
+            <img src="assets/dishes/Chicken Biryani.png" alt="Chicken Biryani" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <div class="dish-rating" aria-label="Rating 4.7 out of 5"><span class="star">★</span><span class="rating-num">4.7</span></div>
+            <h3 class="dish-title">CHICKEN BIRYANI</h3>
+            <p class="dish-desc">Fragrant basmati rice and aromatic spices.</p>
+            <span class="badge-hurry">Hurry up</span>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="dish-media">
+            <img src="assets/dishes/Lamb Biryani.png" alt="Lamb Biryani" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <div class="dish-rating" aria-label="Rating 4.6 out of 5"><span class="star">★</span><span class="rating-num">4.6</span></div>
+            <h3 class="dish-title">LAMB BIRYANI</h3>
+            <p class="dish-desc">Succulent lamb cooked with fragrant basmati rice.</p>
+            <span class="badge-hurry">Hurry up</span>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="dish-media">
+            <img src="assets/dishes/Fish Pooliched.png" alt="Fish Pooliched" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <div class="dish-rating" aria-label="Rating 4.4 out of 5"><span class="star">★</span><span class="rating-num">4.4</span></div>
+            <h3 class="dish-title">FISH POACHED</h3>
+            <p class="dish-desc">Delicate fish poached in a fragrant broth.</p>
+            <span class="badge-hurry">Hurry up</span>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="dish-media">
+            <img src="assets/dishes/Fish Tikka.png" alt="Fish Tikka" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <div class="dish-rating" aria-label="Rating 4.8 out of 5"><span class="star">★</span><span class="rating-num">4.8</span></div>
+            <h3 class="dish-title">FISH TIKKA</h3>
+            <p class="dish-desc">Smoky marinade, charred edges, juicy inside.</p>
+            <span class="badge-hurry">Hurry up</span>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="dish-media">
+            <img src="assets/dishes/Crab.png" alt="Crab" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <div class="dish-rating" aria-label="Rating 4.2 out of 5"><span class="star">★</span><span class="rating-num">4.2</span></div>
+            <h3 class="dish-title">CRAB</h3>
+            <p class="dish-desc">Succulent crab meat in a spicy sauce.</p>
+            <span class="badge-hurry">Hurry up</span>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="dish-media">
+            <img src="assets/dishes/Egg noodles.png" alt="Egg Noodles" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <div class="dish-rating" aria-label="Rating 4.5 out of 5"><span class="star">★</span><span class="rating-num">4.5</span></div>
+            <h3 class="dish-title">EGG NOODLES</h3>
+            <p class="dish-desc">Stir-fried noodles with vegetables and egg.</p>
+            <span class="badge-hurry">Hurry up</span>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="dish-media">
+            <img src="assets/dishes/Fish Pooliched.png" alt="Fish Pooliched" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <div class="dish-rating" aria-label="Rating 4.3 out of 5"><span class="star">★</span><span class="rating-num">4.3</span></div>
+            <h3 class="dish-title">FISH POACHED</h3>
+            <p class="dish-desc">Fresh catch, poached to perfection.</p>
+            <span class="badge-hurry">Hurry up</span>
+          </div>
+        </article>
+
+        <article class="dish-card">
+          <div class="dish-media">
+            <img src="assets/dishes/spice bag.png" alt="Spice Bag" loading="lazy">
+          </div>
+          <div class="dish-body">
+            <div class="dish-rating" aria-label="Rating 4.1 out of 5"><span class="star">★</span><span class="rating-num">4.1</span></div>
+            <h3 class="dish-title">SPICE BAG</h3>
+            <p class="dish-desc">Aromatic basmati, saffron, seasonal vegetables.</p>
+            <span class="badge-hurry">Hurry up</span>
+          </div>
+        </article>
+
+        <!-- duplicate for seamless loop -->
+        <div class="dup"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- arrows OUTSIDE the scroller -->
+  <button class="pop-arrow pop-prev" type="button" aria-label="Scroll previous">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <button class="pop-arrow pop-next" type="button" aria-label="Scroll next">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+      <path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</section>
+
+
+  <!-- DEMO SECTIONS -->
+  <section id="about" class="about section" aria-labelledby="aboutTitle">
+  <!-- floating decor inside About section -->
+  <img class="about-decor decor-top-left" src="assets/decors/chuf1.png" alt="" aria-hidden="true">
+  <img class="about-decor decor-bottom-right" src="assets/decors/chuf2.png" alt="" aria-hidden="true">
+
+  <div class="container">
+    <header class="about-head">
+      <p class="eyebrow">Discover our story</p>
+      <h2 id="aboutTitle" class="title">Led by Chef Rehman</h2>
+      <p class="lead">
+        Behind every great dish is a vision. Ours is guided by 
+        <strong>Chef Rehman</strong> — a professional chef with 
+        unmatched mastery of fire, flavour, and finesse.
+      </p>
+    </header>
+
+    <div class="about-grid">
+      <!-- Chef image + badge -->
+      <article class="card chef" aria-labelledby="chefTitle">
+        <div class="chef-media">
+          <img src="assets/Chef Plating Dish.jpeg" alt="Chef Rehman portrait" />
+          <span class="pill">Executive Chef</span>
+        </div>
+        <div class="chef-body">
+          <h3 id="chefTitle">Chef Rehman</h3>
+          <p class="subtitle">Professional Chef • Mentor • Innovator</p>
+          <p>
+            With more than a decade of culinary experience, Chef Rehman is known
+            for transforming simple ingredients into memorable dining moments.
+            His cooking blends classical technique with bold creativity,
+            earning him respect among both peers and guests.
+          </p>
+          <ul class="bullets">
+            <li>15+ years of culinary expertise across global cuisines</li>
+            <li>Recognized for innovative marinades & spice profiles</li>
+            <li>Passionate mentor shaping the next generation of chefs</li>
+          </ul>
+          <div class="signature">
+            <span class="sig">— Rehman</span>
+            <span class="sig-note">“Cooking is an art, elevated through discipline.”</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Story / Philosophy -->
+      <article class="card story">
+        <h3>A journey of taste & dedication</h3>
+        <p>
+          Chef Rehman’s story is one of discipline and passion. Starting from
+          humble beginnings, he honed his craft in professional kitchens and
+          brought a fresh approach to traditional recipes.
+        </p>
+        <p>
+          His philosophy is simple: respect every ingredient, cook with heart,
+          and serve food that creates lasting memories. Every dish reflects his
+          pursuit of excellence and his belief that food is more than taste —
+          it’s an experience.
+        </p>
+        <ul class="stats">
+          <li><span class="num">15+</span><span class="label">Years experience</span></li>
+          <li><span class="num">200k+</span><span class="label">Plates served</span></li>
+          <li><span class="num">50+</span><span class="label">Signature recipes</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <section id="menu" class="section container text-white-50">
+    <h2 class="section-title text-white">Menu</h2>
+    <p>Highlight bestsellers or link to your menu page…</p>
+  </section>
+
+<!-- ================= FOOTER ================= -->
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container footer-top">
+    <div class="footer-grid">
+
+      <!-- About / Logo -->
+      <div class="footer-col">
+        <h3 class="footer-logo">Loya <span>Restaurant</span></h3>
+        <p class="footer-about">
+          Experience fine dining with a modern twist. Seasonal flavors, curated wines, and unforgettable ambience.
+        </p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#menu">Our Menu</a></li>
+          <li><a href="#reservations">Reservations</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Opening Hours -->
+      <div class="footer-col">
+        <h4 class="footer-title">Opening Hours</h4>
+        <ul class="footer-hours">
+          <li>Mon – Fri: 11:00 AM – 11:00 PM</li>
+          <li>Saturday: 12:00 PM – 12:00 AM</li>
+          <li>Sunday: 12:00 PM – 10:00 PM</li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer-col">
+        <h4 class="footer-title">Contact</h4>
+        <ul class="footer-contact">
+          <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, City Center</li>
+          <li><i class="fas fa-phone-alt"></i> <a href="tel:+1234567890">+1 (234) 567-890</a></li>
+          <li><i class="fas fa-envelope"></i> <a href="mailto:hello@loyarestaurant.com">hello@loyarestaurant.com</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>© 2025 Loya Restaurant. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Font Awesome (for icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Bootstrap JS + your script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js?v=5"></script>
+</body>
+</html>
