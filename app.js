@@ -271,3 +271,38 @@
     }, 120);
   });
 })();
+
+// ===== Gallery Filter Logic =====
+(function(){
+  const buttons = document.querySelectorAll('.gallery .gf-btn');
+  const items = document.querySelectorAll('.gallery .g-item');
+
+  function applyFilter(filter){
+    items.forEach(it => {
+      const cat = it.getAttribute('data-cat');
+      const show = (filter === 'all') || (cat === filter);
+      if(show){ it.removeAttribute('hidden'); }
+      else { it.setAttribute('hidden',''); }
+    });
+  }
+
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>{
+        b.classList.remove('is-active');
+        b.setAttribute('aria-pressed','false');
+      });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-pressed','true');
+      applyFilter(btn.dataset.filter);
+    });
+  });
+
+  // optional: allow filter via URL hash (#gallery?cat=veg)
+  const params = new URLSearchParams(location.hash.split('?')[1]);
+  const initial = params.get('cat');
+  if(initial){
+    const match = Array.from(buttons).find(b => b.dataset.filter === initial);
+    if(match){ match.click(); }
+  }
+})();

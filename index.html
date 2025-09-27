@@ -113,7 +113,7 @@
 
     <header class="text-center mb-4">
       <h2 id="popularTitle" class="section-title no-bar text-white d-inline-block">
-        Popular Dishes
+        POPULAR DISHES
       </h2>
       <p class="popular-subtitle mb-0">Taste the joy—chef’s favorites, loved by regulars.</p>
     </header>
@@ -336,7 +336,199 @@
     </div>
   </div>
 </section>
+<!-- ========== OUR GALLERY ========== -->
+<section id="gallery" class="section gallery" aria-labelledby="galleryTitle">
+  <div class="container">
+    <header class="gallery-head text-center">
+      <p class="eyebrow">Taste with your eyes</p>
+      <h2 id="galleryTitle" class="title">OUR GALLERY</h2>
+      <p class="lead">A peek at guest favorites and chef specials.</p>
+    </header>
 
+    <!-- Filters -->
+    <div class="gallery-filters justify-center" role="tablist" aria-label="Gallery filters">
+      <button class="gf-btn is-active" data-filter="all" aria-pressed="true" role="tab">All</button>
+      <button class="gf-btn" data-filter="veg" role="tab">Veg</button>
+      <button class="gf-btn" data-filter="nonveg" role="tab">Non-Veg</button>
+      <button class="gf-btn" data-filter="drinks" role="tab">Drinks</button>
+      <button class="gf-btn" data-filter="desserts" role="tab">Desserts</button>
+    </div>
+
+    <!-- Grid -->
+    <div class="gallery-grid" id="galleryGrid">
+      <figure class="g-item" data-cat="veg">
+        <img src="assets/Gallery/Paneer Tikka1.png" alt="Paneer Tikka" loading="lazy">
+        <figcaption>
+          <span class="badge">Veg</span>
+          <h3>Paneer Tikka</h3>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item" data-cat="nonveg">
+        <img src="assets/Gallery/Chicken Tandoori.png" alt="Chicken Tandoori" loading="lazy">
+        <figcaption>
+          <span class="badge">Non-Veg</span>
+          <h3>Chicken Tandoori</h3>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item" data-cat="drinks">
+        <img src="assets/Gallery/Mango Lassi.png" alt="Mango Lassi" loading="lazy">
+        <figcaption>
+          <span class="badge">Drinks</span>
+          <h3>Mango Lassi</h3>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item" data-cat="desserts">
+        <img src="assets/Gallery/Gulab Jamun.png" alt="Gulab Jamun" loading="lazy">
+        <figcaption>
+          <span class="badge">Desserts</span>
+          <h3>Gulab Jamun</h3>
+        </figcaption>
+      </figure>
+
+      <!-- Extra Items -->
+      <figure class="g-item" data-cat="nonveg">
+        <img src="assets/Gallery/Biryani.png" alt="Hyderabadi Biryani" loading="lazy">
+        <figcaption>
+          <span class="badge">Non-Veg</span>
+          <h3>Hyderabadi Biryani</h3>
+        </figcaption>
+      </figure>
+
+      <figure class="g-item" data-cat="drinks">
+        <img src="assets/Gallery/Mocktail.png" alt="Fruit Mocktail" loading="lazy">
+        <figcaption>
+          <span class="badge">Drinks</span>
+          <h3>Fruit Mocktail</h3>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- View All Button -->
+    <div class="gallery-footer text-center">
+      <a href="gallery.html" class="btn-viewall">View All</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHAT OUR GUESTS SAY ========== -->
+<section id="testimonials" class="section testimonials" aria-labelledby="tTitle">
+  <div class="container">
+    <header class="t-head text-center">
+      <p class="eyebrow">Real diners, real stories</p>
+      <h2 id="tTitle" class="title">What Our Guests Say</h2>
+      <p class="lead">Honest feedback that keeps us cooking better.</p>
+    </header>
+
+    <div class="t-grid">
+      <!-- Card 1 -->
+      <figure class="t-card">
+        <div class="t-stars" aria-label="Rated 5 out of 5">
+          <svg viewBox="0 0 24 24" class="star"><path d="M12 2l3.09 6.3 6.95 1.01-5.02 4.9 1.18 6.88L12 17.77l-6.2 3.32 1.18-6.88L2 9.31l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="star"><path d="M12 2l3.09 6.3 6.95 1.01-5.02 4.9 1.18 6.88L12 17.77l-6.2 3.32 1.18-6.88L2 9.31l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="star"><path d="M12 2l3.09 6.3 6.95 1.01-5.02 4.9 1.18 6.88L12 17.77l-6.2 3.32 1.18-6.88L2 9.31l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="star"><path d="M12 2l3.09 6.3 6.95 1.01-5.02 4.9 1.18 6.88L12 17.77l-6.2 3.32 1.18-6.88L2 9.31l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" class="star"><path d="M12 2l3.09 6.3 6.95 1.01-5.02 4.9 1.18 6.88L12 17.77l-6.2 3.32 1.18-6.88L2 9.31l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="t-quote">“The best biryani I’ve had in years—aroma, spice, everything perfect.”</blockquote>
+        <figcaption class="t-meta">
+          <img src="assets/testimonials/guest1.jpg" alt="" class="t-avatar" />
+          <div>
+            <strong>Ananya R.</strong>
+            <span>Bengaluru</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <!-- Card 2 -->
+      <figure class="t-card">
+        <div class="t-stars" aria-label="Rated 4.8 out of 5">
+          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
+          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
+          <svg viewBox="0 0 24 24" class="star"></svg>
+        </div>
+        <blockquote class="t-quote">“Paneer tikka was smoky and tender. Service is warm and quick.”</blockquote>
+        <figcaption class="t-meta">
+          <img src="assets/testimonials/guest2.jpg" alt="" class="t-avatar" />
+          <div>
+            <strong>Karthik M.</strong>
+            <span>Hyderabad</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <!-- Card 3 -->
+      <figure class="t-card">
+        <div class="t-stars" aria-label="Rated 5 out of 5">
+          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
+          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
+          <svg viewBox="0 0 24 24" class="star"></svg>
+        </div>
+        <blockquote class="t-quote">“Mocktails were refreshing and the chilli paneer—chef’s kiss.”</blockquote>
+        <figcaption class="t-meta">
+          <img src="assets/testimonials/guest3.jpg" alt="" class="t-avatar" />
+          <div>
+            <strong>Sarah L.</strong>
+            <span>Dublin</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <!-- Card 4 -->
+      <figure class="t-card">
+        <div class="t-stars" aria-label="Rated 4.9 out of 5">
+          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
+          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
+          <svg viewBox="0 0 24 24" class="star"></svg>
+        </div>
+        <blockquote class="t-quote">“Balanced spice, authentic flavours—exactly what we hoped for.”</blockquote>
+        <figcaption class="t-meta">
+          <img src="assets/testimonials/guest4.jpg" alt="" class="t-avatar" />
+          <div>
+            <strong>Ahmed K.</strong>
+            <span>Dubai</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <!-- Card 5 -->
+      <figure class="t-card">
+        <div class="t-stars" aria-label="Rated 5 out of 5">
+          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
+          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
+          <svg viewBox="0 0 24 24" class="star"></svg>
+        </div>
+        <blockquote class="t-quote">“Desserts are heavenly—don’t miss the gulab jamun.”</blockquote>
+        <figcaption class="t-meta">
+          <img src="assets/testimonials/guest5.jpg" alt="" class="t-avatar" />
+          <div>
+            <strong>Priya S.</strong>
+            <span>Mumbai</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <!-- Card 6 -->
+      <figure class="t-card">
+        <div class="t-stars" aria-label="Rated 4.7 out of 5">
+          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
+          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
+          <svg viewBox="0 0 24 24" class="star"></svg>
+        </div>
+        <blockquote class="t-quote">“Great ambience and music. We’ll definitely be back.”</blockquote>
+        <figcaption class="t-meta">
+          <img src="assets/testimonials/guest6.jpg" alt="" class="t-avatar" />
+          <div>
+            <strong>Liam O.</strong>
+            <span>Cork</span>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
