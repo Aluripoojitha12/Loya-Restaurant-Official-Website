@@ -306,3 +306,137 @@
     if(match){ match.click(); }
   }
 })();
+
+// ===== testimonials: Rotates two visible cards to avoid long, clumsy section =====
+(function(){
+  const items = Array.from(document.querySelectorAll('#t3Source li'));
+  if (items.length === 0) return;
+
+  const slotA = document.getElementById('t3slot1');
+  const slotB = document.getElementById('t3slot2');
+
+  function paint(slot, d){
+    slot.querySelector('.t3-quoteTitle').textContent = d.title;
+    slot.querySelector('.t3-quote').textContent = `“${d.text}”`;
+    slot.querySelector('.t3-avatar').src = d.img || '';
+    slot.querySelector('.t3-meta strong').textContent = d.name || '';
+    slot.querySelector('.t3-meta span').textContent = d.role || '';
+  }
+
+  const data = items.map(li => ({
+    title: li.dataset.title || '',
+    text:  li.dataset.text  || '',
+    name:  li.dataset.name  || '',
+    role:  li.dataset.role  || '',
+    img:   li.dataset.img   || ''
+  }));
+
+  let i = 0;
+  function swap(first){
+    [slotA, slotB].forEach(s => s.classList.remove('show'));
+    setTimeout(()=>{
+      paint(slotA, data[i % data.length]);
+      paint(slotB, data[(i+1) % data.length]);
+      [slotA, slotB].forEach(s => s.classList.add('show'));
+      i = (i + 2) % data.length;
+    }, first ? 40 : 250);
+  }
+
+  swap(true);
+  setInterval(swap, 5000); // every 5s
+})();
+
+// ========== Scroll animations (global) ==========//
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Auto-tag common elements so you don’t edit HTML everywhere
+  const autoSelectors = [
+    // texts
+    'h1, h2, h3, .title, .lead, .eyebrow, .popular-subtitle, .coming-title, .coming-subtitle',
+    // cards/blocks
+    '.dish-card, .card, .lac__card, .t3-card, .g-item, .footer-col'
+  ];
+  autoSelectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => el.classList.add('reveal'));
+  });
+
+  // Make “cards” feel a bit stronger
+  document.querySelectorAll('.dish-card, .card, .g-item, .t3-card').forEach(el => {
+    el.classList.add('card-pop');
+  });
+
+  // Food images rotate then settle
+  const spinTargets = [
+    '.dish-card .dish-media img',
+    '.g-item img'
+  ];
+  spinTargets.forEach(sel => {
+    document.querySelectorAll(sel).forEach(img => img.classList.add('spin-in'));
+  });
+
+  // Stagger within containers (optional, nice effect)
+  const staggerParents = [
+    '.popular-track',
+    '.about-grid',
+    '.lac__content',
+    '.gallery-grid',
+    '.t3-cards',
+    '.footer-grid'
+  ];
+  staggerParents.forEach(parentSel => {
+    document.querySelectorAll(parentSel).forEach(parent => {
+      [...parent.children].forEach((child, idx) => {
+        child.setAttribute('data-delay', String(Math.min(idx * 100, 400)));
+      });
+    });
+  });
+
+  // IntersectionObserver to reveal once
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+
+  document.querySelectorAll('.reveal, .card-pop, .spin-in').forEach(el => io.observe(el));
+})();
+// ========== Newsletter banner: open when centered in viewport ==========//
+// Black line grows from bottom, flips to gold, then doors open
+document.addEventListener('DOMContentLoaded', () => {
+  const banner = document.querySelector('.nl-banner');
+  if (!banner) return;
+
+  const LINE_MS = 800;     // match --line-dur
+  const FLIP_BEFORE = 120; // ms before finish to flip to gold
+  const AFTER_PAD = 80;    // small buffer before door open
+
+  const start = () => {
+    // 1) grow the (black) line upward
+    banner.classList.add('line-grow');
+
+    // 2) near the end, flip the line to GOLD (brief glint)
+    setTimeout(() => {
+      banner.classList.add('line-gold');
+    }, Math.max(0, LINE_MS - FLIP_BEFORE));
+
+    // 3) after the line completes, hide it and open the doors
+    setTimeout(() => {
+      banner.classList.add('line-hide'); // fade line out
+      banner.classList.add('is-open');   // open doors → reveal everything
+    }, LINE_MS + AFTER_PAD);
+  };
+
+  // Trigger when the banner is in view
+  const io = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+      start();
+      io.disconnect();
+    }
+  }, { threshold: 0.25 });
+
+  io.observe(banner);
+});

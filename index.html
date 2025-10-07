@@ -8,7 +8,7 @@
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <!-- Custom styles -->
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
 
@@ -74,6 +74,28 @@
       </div>
     </div>
   </section>
+<!-- ===== OFFERS TICKER (place below hero) ===== -->
+<!-- ===== SIMPLE PREMIUM OFFER TICKER (place just below hero) ===== -->
+<section class="simple-ticker" aria-label="Latest offers">
+  <div class="simple-ticker__inner">
+    <ul class="simple-ticker__row">
+      <li>Weekend combo — <em>20% off</em></li>
+      <li>Family platter — <em>₹999</em></li>
+      <li>Free dessert on orders <em>₹1499+</em></li>
+      <li>Happy hour — <em>4–6 pm</em></li>
+      <li>Corporate bookings — <em>extra 10%</em></li>
+    </ul>
+    <!-- duplicate (for seamless loop) -->
+    <ul class="simple-ticker__row" aria-hidden="true">
+      <li>Weekend combo — <em>20% off</em></li>
+      <li>Family platter — <em>₹999</em></li>
+      <li>Free dessert on orders <em>₹1499+</em></li>
+      <li>Happy hour — <em>4–6 pm</em></li>
+      <li>Corporate bookings — <em>extra 10%</em></li>
+    </ul>
+  </div>
+</section>
+
 
   <!-- COMING SOON -->
   <section id="coming-soon" class="coming-soon text-white" aria-labelledby="comingSoonTitle">
@@ -336,6 +358,53 @@
     </div>
   </div>
 </section>
+<!-- ============== ABOUT US (LOYΑ · PREMIUM PARALLAX) ============== -->
+<section id="about" class="loya-about-center section" aria-labelledby="aboutTitle">
+  <!-- Premium Background -->
+  <div class="lac__bg"></div>
+
+  <div class="container">
+    <header class="lac__head">
+      <p class="lac__eyebrow">ABOUT US</p>
+      <h2 id="aboutTitle" class="lac__title">The Spirit of Loya</h2>
+      <p class="lac__lead">
+        Loya is not just a restaurant—it’s an experience. We honor the timeless flavors of India’s heartland, blending tradition with innovation, fire with flavor, and hospitality with warmth. 
+      </p>
+    </header>
+
+    <div class="lac__content">
+      <div class="lac__card">
+        <h3>Heritage & Craft</h3>
+        <p>
+          Our recipes are passed down through generations, preserving the essence of Indian cuisine with an elegant touch of modern creativity.
+        </p>
+      </div>
+      <div class="lac__card">
+        <h3>Fire & Flavour</h3>
+        <p>
+          Experience the magic of slow-cooked delicacies over an open flame, where each dish tells a story of dedication and skill.
+        </p>
+      </div>
+      <div class="lac__card">
+        <h3>Unrivaled Hospitality</h3>
+        <p>
+          At Loya, hospitality is our heartbeat. We go beyond service, creating moments of connection, warmth, and comfort with every guest.
+        </p>
+      </div>
+    </div>
+
+    <div class="lac__stats" role="list" aria-label="Highlights">
+      <div role="listitem"><strong>25+</strong><span>Years of Legacy</span></div>
+      <div role="listitem"><strong>50+</strong><span>Signature Dishes</span></div>
+      <div role="listitem"><strong>4.8</strong><span>Guest Rating</span></div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
 <!-- ========== OUR GALLERY ========== -->
 <section id="gallery" class="section gallery" aria-labelledby="galleryTitle">
   <div class="container">
@@ -412,123 +481,113 @@
     </div>
   </div>
 </section>
+<!-- ===== Newsletter (Gold Banner) ===== -->
+<!-- ===== Newsletter (Gold Folding Banner · Compact Section) ===== -->
+<section id="newsletter" class="nl-sec-compact" aria-labelledby="nlTitle">
+  <div class="nl-wrap">
+    <div class="nl-banner" role="region" aria-label="Newsletter subscription">
+      <div class="nl-inner">
+        <!-- Left image -->
+        <figure class="nl-media" aria-hidden="true">
+          <img src="assets/news.png" alt="" />
+        </figure>
 
-<!-- ========== WHAT OUR GUESTS SAY ========== -->
-<section id="testimonials" class="section testimonials" aria-labelledby="tTitle">
-  <div class="container">
-    <header class="t-head text-center">
-      <p class="eyebrow">Real diners, real stories</p>
-      <h2 id="tTitle" class="title">What Our Guests Say</h2>
-      <p class="lead">Honest feedback that keeps us cooking better.</p>
-    </header>
+        <!-- Right content -->
+        <div class="nl-content">
+          <p class="nl-eyebrow">Newsletter</p>
+          <h3 id="nlTitle" class="nl-title">Subscribe for<br>Offer Updates</h3>
 
-    <div class="t-grid">
-      <!-- Card 1 -->
-      <figure class="t-card">
-        <div class="t-stars" aria-label="Rated 5 out of 5">
-          <svg viewBox="0 0 24 24" class="star"><path d="M12 2l3.09 6.3 6.95 1.01-5.02 4.9 1.18 6.88L12 17.77l-6.2 3.32 1.18-6.88L2 9.31l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" class="star"><path d="M12 2l3.09 6.3 6.95 1.01-5.02 4.9 1.18 6.88L12 17.77l-6.2 3.32 1.18-6.88L2 9.31l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" class="star"><path d="M12 2l3.09 6.3 6.95 1.01-5.02 4.9 1.18 6.88L12 17.77l-6.2 3.32 1.18-6.88L2 9.31l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" class="star"><path d="M12 2l3.09 6.3 6.95 1.01-5.02 4.9 1.18 6.88L12 17.77l-6.2 3.32 1.18-6.88L2 9.31l6.91-1.01L12 2z"/></svg>
-          <svg viewBox="0 0 24 24" class="star"><path d="M12 2l3.09 6.3 6.95 1.01-5.02 4.9 1.18 6.88L12 17.77l-6.2 3.32 1.18-6.88L2 9.31l6.91-1.01L12 2z"/></svg>
+          <form class="nl-form" action="#" method="post" novalidate>
+            <label class="sr-only" for="nlEmail">Email</label>
+            <input id="nlEmail" type="email" placeholder="Enter email address" required>
+            <button type="submit" class="nl-btn">Subscribe</button>
+          </form>
         </div>
-        <blockquote class="t-quote">“The best biryani I’ve had in years—aroma, spice, everything perfect.”</blockquote>
-        <figcaption class="t-meta">
-          <img src="assets/testimonials/guest1.jpg" alt="" class="t-avatar" />
-          <div>
-            <strong>Ananya R.</strong>
-            <span>Bengaluru</span>
-          </div>
-        </figcaption>
-      </figure>
+      </div>
 
-      <!-- Card 2 -->
-      <figure class="t-card">
-        <div class="t-stars" aria-label="Rated 4.8 out of 5">
-          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
-          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
-          <svg viewBox="0 0 24 24" class="star"></svg>
-        </div>
-        <blockquote class="t-quote">“Paneer tikka was smoky and tender. Service is warm and quick.”</blockquote>
-        <figcaption class="t-meta">
-          <img src="assets/testimonials/guest2.jpg" alt="" class="t-avatar" />
-          <div>
-            <strong>Karthik M.</strong>
-            <span>Hyderabad</span>
-          </div>
-        </figcaption>
-      </figure>
-
-      <!-- Card 3 -->
-      <figure class="t-card">
-        <div class="t-stars" aria-label="Rated 5 out of 5">
-          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
-          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
-          <svg viewBox="0 0 24 24" class="star"></svg>
-        </div>
-        <blockquote class="t-quote">“Mocktails were refreshing and the chilli paneer—chef’s kiss.”</blockquote>
-        <figcaption class="t-meta">
-          <img src="assets/testimonials/guest3.jpg" alt="" class="t-avatar" />
-          <div>
-            <strong>Sarah L.</strong>
-            <span>Dublin</span>
-          </div>
-        </figcaption>
-      </figure>
-
-      <!-- Card 4 -->
-      <figure class="t-card">
-        <div class="t-stars" aria-label="Rated 4.9 out of 5">
-          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
-          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
-          <svg viewBox="0 0 24 24" class="star"></svg>
-        </div>
-        <blockquote class="t-quote">“Balanced spice, authentic flavours—exactly what we hoped for.”</blockquote>
-        <figcaption class="t-meta">
-          <img src="assets/testimonials/guest4.jpg" alt="" class="t-avatar" />
-          <div>
-            <strong>Ahmed K.</strong>
-            <span>Dubai</span>
-          </div>
-        </figcaption>
-      </figure>
-
-      <!-- Card 5 -->
-      <figure class="t-card">
-        <div class="t-stars" aria-label="Rated 5 out of 5">
-          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
-          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
-          <svg viewBox="0 0 24 24" class="star"></svg>
-        </div>
-        <blockquote class="t-quote">“Desserts are heavenly—don’t miss the gulab jamun.”</blockquote>
-        <figcaption class="t-meta">
-          <img src="assets/testimonials/guest5.jpg" alt="" class="t-avatar" />
-          <div>
-            <strong>Priya S.</strong>
-            <span>Mumbai</span>
-          </div>
-        </figcaption>
-      </figure>
-
-      <!-- Card 6 -->
-      <figure class="t-card">
-        <div class="t-stars" aria-label="Rated 4.7 out of 5">
-          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
-          <svg viewBox="0 0 24 24" class="star"></svg><svg viewBox="0 0 24 24" class="star"></svg>
-          <svg viewBox="0 0 24 24" class="star"></svg>
-        </div>
-        <blockquote class="t-quote">“Great ambience and music. We’ll definitely be back.”</blockquote>
-        <figcaption class="t-meta">
-          <img src="assets/testimonials/guest6.jpg" alt="" class="t-avatar" />
-          <div>
-            <strong>Liam O.</strong>
-            <span>Cork</span>
-          </div>
-        </figcaption>
-      </figure>
+      <!-- Folding doors -->
+      <div class="nl-door left" aria-hidden="true"></div>
+      <div class="nl-door right" aria-hidden="true"></div>
     </div>
   </div>
 </section>
+
+<!-- ========== TESTIMONIALS (Loya Restaurant) ========== -->
+<section id="testimonials" class="section t3" aria-labelledby="t3Title">
+  <div class="container">
+    <!-- Split: left coloured panel + right image -->
+    <div class="t3-split">
+      <div class="t3-left">
+        <div class="t3-left-inner">
+          <p class="eyebrow">TESTIMONIALS</p>
+          <h2 id="t3Title" class="title">What Our Guests Love at Loya</h2>
+          <p class="lead">Honest words from diners who keep coming back for our flavour, warmth, and service.</p>
+        </div>
+      </div>
+      <figure class="t3-right">
+        <!-- keep your image path; replace if needed -->
+        <img src="assets/testimonials/testimonial.png" alt="Loya kitchen team at work">
+      </figure>
+    </div>
+
+    <!-- Centered overlay cards (auto-rotates via JS) -->
+    <div class="t3-cards">
+      <article class="t3-card" id="t3slot1">
+        <h3 class="t3-quoteTitle">Unforgettable biryani</h3>
+        <p class="t3-quote">“The biryani at Loya is unmatched—fragrant rice, tender meat, perfect spice.”</p>
+        <div class="t3-meta">
+          <img class="t3-avatar" src="assets/testimonials/guest1.png" alt="">
+          <div>
+            <strong>Siobhán K.</strong>
+            <span>Dublin</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="t3-card" id="t3slot2">
+        <h3 class="t3-quoteTitle">Warm, personal service</h3>
+        <p class="t3-quote">“Team Loya looked after us so well—fast, friendly, and kid-friendly too.”</p>
+        <div class="t3-meta">
+          <img class="t3-avatar" src="assets/testimonials/guest2.png" alt="">
+          <div>
+            <strong>Arjun M.</strong>
+            <span>Swords</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Data source: add 20+ items here; rotator will handle -->
+    <ul id="t3Source" hidden>
+      <li data-title="Unforgettable biryani"
+          data-text="The biryani at Loya is unmatched—fragrant rice, tender meat, perfect spice."
+          data-name="Siobhán K." data-role="Dublin" data-img="assets/testimonials/guest1.png"></li>
+
+      <li data-title="Warm, personal service"
+          data-text="Team Loya looked after us so well—fast, friendly, and kid-friendly too."
+          data-name="Arjun M." data-role="Swords" data-img="assets/testimonials/guest2.png"></li>
+
+      <li data-title="Smoky paneer tikka"
+          data-text="Charred edges, soft centre, and that signature Loya marinade—superb."
+          data-name="Emily R." data-role="Malahide" data-img="assets/testimonials/guest3.png"></li>
+
+      <li data-title="Mango lassi perfection"
+          data-text="Thick, refreshing, not too sweet—exactly what you want with spice."
+          data-name="Conor D." data-role="Blanchardstown" data-img="assets/testimonials/guest4.png"></li>
+
+      <li data-title="Heavenly gulab jamun"
+          data-text="Warm, soft, and melt-in-the-mouth. A perfect finish to dinner at Loya."
+          data-name="Priya S." data-role="Castleknock" data-img="assets/testimonials/guest5.png"></li>
+
+      <li data-title="Vegetarian done right"
+          data-text="So many thoughtful veg options—flavourful, hearty, and beautifully plated."
+          data-name="Aoife M." data-role="Dublin 15" data-img="assets/testimonials/guest6.png"></li>
+    </ul>
+  </div>
+</section>
+
+
+
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
