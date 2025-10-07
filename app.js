@@ -405,29 +405,46 @@
   document.querySelectorAll('.reveal, .card-pop, .spin-in').forEach(el => io.observe(el));
 })();
 // ========== Newsletter banner: open when centered in viewport ==========//
-// Black line grows from bottom, flips to gold, then doors open
+// Sequence:
+// 1) grow BLACK line from bottom
+// 2) flip line to GOLD near the end
+// 3) open black doors
+// 4) after doors finish, slide image from LEFT & text+form from RIGHT (BOTTOM on mobile)
 document.addEventListener('DOMContentLoaded', () => {
-  const banner = document.querySelector('.nl-banner');
-  if (!banner) return;
+  const banner    = document.querySelector('.nl-banner');
+  const leftDoor  = banner?.querySelector('.nl-door.left');
+  const rightDoor = banner?.querySelector('.nl-door.right');
+  if (!banner || !leftDoor || !rightDoor) return;
 
-  const LINE_MS = 800;     // match --line-dur
+  const LINE_MS = 800;     // keep in sync with --line-dur
   const FLIP_BEFORE = 120; // ms before finish to flip to gold
   const AFTER_PAD = 80;    // small buffer before door open
 
   const start = () => {
-    // 1) grow the (black) line upward
+    // Step 1: grow the (black) center line
     banner.classList.add('line-grow');
 
-    // 2) near the end, flip the line to GOLD (brief glint)
+    // Step 2: near the end, flip to gold
     setTimeout(() => {
       banner.classList.add('line-gold');
     }, Math.max(0, LINE_MS - FLIP_BEFORE));
 
-    // 3) after the line completes, hide it and open the doors
+    // Step 3: after line done, hide it and open doors
     setTimeout(() => {
-      banner.classList.add('line-hide'); // fade line out
-      banner.classList.add('is-open');   // open doors → reveal everything
+      banner.classList.add('line-hide');
+      banner.classList.add('is-open');
     }, LINE_MS + AFTER_PAD);
+
+    // Step 4: when doors finish opening, reveal sides (image + text + form)
+    const onDoorEnd = (e) => {
+      if (e.propertyName === 'transform') {
+        banner.classList.add('is-reveal');
+        leftDoor.removeEventListener('transitionend', onDoorEnd);
+        rightDoor.removeEventListener('transitionend', onDoorEnd);
+      }
+    };
+    leftDoor.addEventListener('transitionend', onDoorEnd);
+    rightDoor.addEventListener('transitionend', onDoorEnd);
   };
 
   // Trigger when the banner is in view
