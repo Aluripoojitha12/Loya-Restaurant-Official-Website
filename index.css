@@ -1169,7 +1169,7 @@ img { max-width: 100%; height: auto; }
   left: var(--img-gap);
   width: calc(100% - (2 * var(--img-gap)));
   height: calc(100% - (2 * var(--img-gap)));
-  object-fit: cover;              /* <<< ALWAYS COVER */
+  object-fit: cover;              /* ALWAYS COVER */
   object-position:center;
   border-radius:12px;
   filter: brightness(0.95) drop-shadow(0 8px 16px var(--shadow));
@@ -1275,7 +1275,7 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ==============================
-   RESPONSIVE TUNING
+   RESPONSIVE TUNING (general)
    ============================== */
 
 /* Laptops/Desktops */
@@ -1323,7 +1323,7 @@ img { max-width: 100%; height: auto; }
     opacity: 0;
     transform: translateY(28px);
     height: auto;
-    aspect-ratio: 16 / 10;             /* responsive height */
+    aspect-ratio: 16 / 10;             /* base mobile height */
     --img-gap: 8px;                    /* slightly tighter gap on phones */
   }
   .nl-media img{
@@ -1413,6 +1413,64 @@ img { max-width: 100%; height: auto; }
     line-height: 1.05;
     white-space: nowrap;
   }
+}
+
+/* =========================
+   EXPLICIT DESIGN BREAKPOINTS
+   (requested)
+   ========================= */
+
+/* 1) Desktop 1440px — keep banner feel, image FULL COVER, slightly larger gap */
+@media (min-width: 1440px){
+  .nl-wrap{ width:min(1320px, 88%); }
+  .nl-inner{
+    grid-template-columns: 38% 1fr;
+    min-height: clamp(280px, 24vw, 480px);
+  }
+  .nl-media{ --img-gap: 12px; }          /* a touch more breathing room */
+  .nl-media img{
+    top: var(--img-gap); right: var(--img-gap);
+    bottom: var(--img-gap); left: var(--img-gap);
+    width: calc(100% - (2 * var(--img-gap)));
+    height: calc(100% - (2 * var(--img-gap)));
+    object-fit: cover;                   /* full cover inside the frame */
+  }
+}
+
+/* 2) Mobile 425px — COVER + gap, tuned height */
+@media (max-width: 425px) and (min-width: 376px){
+  .nl-media{
+    aspect-ratio: 16 / 10;               /* shallow banner card */
+    --img-gap: 8px;
+  }
+  .nl-media img{
+    top: var(--img-gap); right: var(--img-gap);
+    bottom: var(--img-gap); left: var(--img-gap);
+    width: calc(100% - (2 * var(--img-gap)));
+    height: calc(100% - (2 * var(--img-gap)));
+    object-fit: cover;
+    border-radius: 12px;
+  }
+}
+
+/* 3) Mobile 375px — COVER + gap, a bit taller */
+@media (max-width: 375px){
+  .nl-media{
+    aspect-ratio: 4 / 3;                 /* a little taller for small iPhones */
+    --img-gap: 6px;
+  }
+  .nl-media img{
+    top: var(--img-gap); right: var(--img-gap);
+    bottom: var(--img-gap); left: var(--img-gap);
+    width: calc(100% - (2 * var(--img-gap)));
+    height: calc(100% - (2 * var(--img-gap)));
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .nl-title{ font-size: clamp(1.1rem, 6.4vw, 1.5rem); }
+  .nl-form{ gap: 8px; padding: 6px; }
+  .nl-form input{ padding: 10px 12px; font-size: .95rem; }
+  .nl-btn{ padding: 10px 12px; font-size: .95rem; }
 }
 
 /* Accessibility */
