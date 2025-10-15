@@ -111,6 +111,7 @@
       if (result) result.textContent = `Showing ${shown} ${shown === 1 ? 'result' : 'results'}`;
 
       ensureOrderIcon(); // keep top-right icon present after any filter/search
+      if (window.menuRevealsRefresh) window.menuRevealsRefresh(); // re-animate visible cards & their text
     }
 
     // Category click
@@ -147,6 +148,7 @@
       dots.forEach(d => d.classList.toggle('is-active', +d.dataset.page === currentPage));
       applyFilters();
       ensureOrderIcon(); // ensure icon exists on newly shown page
+      if (window.menuRevealsRefresh) window.menuRevealsRefresh(); // animate new page
     }
     dots.forEach(d => d.addEventListener('click', () => setPage(+d.dataset.page)));
     if (prevBtn) prevBtn.addEventListener('click', () => setPage(currentPage - 1));
@@ -157,7 +159,7 @@
       // Intentionally left blank (bottom actions hidden via CSS, DOM retained)
     }
 
-    // === New: Ensure a single top-right "Order online" button on every card ===
+    // === Ensure a single top-right "Order online" button on every card ===
     function ensureOrderIcon(){
       const nowCards = Array.from(document.querySelectorAll('#menuGrid .card'));
       const orderSVG = `
@@ -166,7 +168,6 @@
         </svg>`;
 
       nowCards.forEach(card => {
-        // remove any old heart/fav and previous order buttons, then add fresh one
         const oldFav = card.querySelector(':scope > .fav'); if (oldFav) oldFav.remove();
         const oldOrder = card.querySelector(':scope > .order-btn'); if (oldOrder) oldOrder.remove();
 
@@ -175,8 +176,10 @@
         btn.setAttribute('aria-label','Order online');
         btn.innerHTML = orderSVG;
 
-        // Hook up a click if you have a URL (replace '#' with actual link)
-        // btn.addEventListener('click', () => { window.location.href = '/order?item=' + encodeURIComponent(card.querySelector('.title')?.textContent || ''); });
+        // Example hook:
+        // btn.addEventListener('click', () => {
+        //   window.location.href = '/order?item=' + encodeURIComponent(card.querySelector('.title')?.textContent || '');
+        // });
 
         card.appendChild(btn);
       });
@@ -186,5 +189,114 @@
     paintRange();
     setPage(1);             // sets dot state + runs applyFilters
     ensureOrderIcon();      // initial pass
+    if (window.menuRevealsRefresh) window.menuRevealsRefresh();  // kick first reveal after DOM paint
   });
+})();
+
+/* ========== Scroll animations (MENU) ========== */
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Auto-tag common MENU elements (no HTML edits needed)
+  const autoSelectors = [
+    // hero texts
+    '.mhero-eyebrow, .mhero-title, .mhero-lead',
+    // sidebar panels
+    '.mp-sidebar .panel',
+    // cards/blocks + footer
+    '.card, .footer-col'
+  ];
+  autoSelectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => el.classList.add('reveal'));
+  });
+
+  // Cards pop a bit more
+  document.querySelectorAll('.card').forEach(el => el.classList.add('card-pop'));
+
+  // Thumb images get a spin-in
+  document.querySelectorAll('#menuGrid .thumb img').forEach(img => img.classList.add('spin-in'));
+
+  // Also tag the inner text in cards so titles/sub/price animate from bottom
+  function tagCardText(scope = document){
+    scope
+      .querySelectorAll('.card .title, .card .sub, .card .row, .card .price')
+      .forEach(el => el.classList.add('reveal'));
+  }
+  tagCardText();
+
+  // Stagger within containers (add hero group too)
+  const staggerParents = [
+    '.mhero-copy',
+    '.card-grid',
+    '.mp-sidebar',
+    '.footer-grid'
+  ];
+  function applyStagger(){
+    staggerParents.forEach(parentSel => {
+      document.querySelectorAll(parentSel).forEach(parent => {
+        [...parent.children].forEach((child, idx) => {
+          const d = Math.min(idx * 100, 400);
+          child.setAttribute('data-delay', String(d));
+          child.classList.add('reveal');
+        });
+      });
+    });
+  }
+  applyStagger();
+
+  // Observer
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+
+  // Observe all revealables
+  function observeAll(){
+    document.querySelectorAll('.reveal, .card-pop, .spin-in').forEach(el => io.observe(el));
+  }
+  observeAll();
+
+  // Expose a refresh hook for dynamic content (filters/pagination)
+  // Animates visible cards AND sequences inner text: image -> title -> sub -> price row
+  window.menuRevealsRefresh = function(){
+    // Make sure new/changed nodes are reveal-enabled
+    document.querySelectorAll('#menuGrid .card').forEach(c => {
+      c.classList.add('reveal', 'card-pop');
+      ['.title', '.sub', '.row', '.price'].forEach(sel => {
+        const n = c.querySelector(sel);
+        if (n) n.classList.add('reveal');
+      });
+    });
+
+    const visibleCards = Array.from(document.querySelectorAll('#menuGrid .card'))
+      .filter(c => !c.classList.contains('is-hidden'));
+
+    visibleCards.forEach((card, idx) => {
+      const outerDelay = Math.min(idx * 70, 400);
+      card.setAttribute('data-delay', String(outerDelay));
+      card.classList.remove('in');       // allow replay
+      io.observe(card);
+
+      const parts = [
+        card.querySelector('.thumb img'),
+        card.querySelector('.title'),
+        card.querySelector('.sub'),
+        card.querySelector('.row')
+      ].filter(Boolean);
+
+      parts.forEach((el, i) => {
+        if (el.tagName === 'IMG') el.classList.add('spin-in');
+        else el.classList.add('reveal');
+
+        el.classList.remove('in');
+        const innerDelay = outerDelay + 120 + i * 80; // cascade inside the card
+        el.setAttribute('data-delay', String(Math.min(innerDelay, 700)));
+        io.observe(el);
+      });
+    });
+  };
 })();

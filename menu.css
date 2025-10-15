@@ -443,3 +443,51 @@ footer.footer .decor-bottom-left{
 }
 
 /* ===== (Optional) Page-specific placeholders – add your Menu sections below ===== */
+/* ===== Scroll reveals (matches HOME) ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal{
+    opacity:0;
+    transform: translateY(40px);
+    will-change: transform, opacity;
+    transition: transform .7s ease, opacity .7s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform: translateY(0);
+  }
+
+  /* Stagger helpers */
+  .reveal[data-delay="100"]{ transition-delay:.1s; }
+  .reveal[data-delay="200"]{ transition-delay:.2s; }
+  .reveal[data-delay="300"]{ transition-delay:.3s; }
+  .reveal[data-delay="400"]{ transition-delay:.4s; }
+
+  /* Stronger pop for cards */
+  .card-pop{
+    opacity:0;
+    transform: translateY(50px) scale(.98);
+    transition: transform .7s ease, opacity .7s ease, box-shadow .3s ease;
+  }
+  .card-pop.in{
+    opacity:1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* Spin-in for food/thumb images (optional flair) */
+  .spin-in{
+    opacity:0;
+    transform: translateY(40px) rotate(-12deg);
+  }
+  .spin-in.in{
+    opacity:1;
+    transform: translateY(0) rotate(0deg);
+    transition: transform .8s cubic-bezier(.2,.7,.2,1), opacity .6s ease;
+  }
+}
+
+/* Optional: add a soft settle shadow when revealed */
+.menu-scope .card.card-pop.in{ box-shadow: 0 12px 34px rgba(0,0,0,.18); }
+/* Optional: text feels snappier than images */
+.card .title.reveal,
+.card .sub.reveal,
+.card .row.reveal { transition-duration: .6s; }
