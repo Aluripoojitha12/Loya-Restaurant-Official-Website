@@ -107,6 +107,29 @@ body { padding-top: calc(var(--topbar-h) + var(--nav-h)); }
   .tb-sep { opacity: 0.5; }
   .tb-link { padding: 6px; font-size: 0.88rem; }
 }
+/* === FIX: topbar + navbar + hero overlap === */
+
+/* Keep navbar pushed below topbar */
+.navbar.fixed-top { top: var(--topbar-h); }
+
+/* Ensure the page clears BOTH bars (override any earlier body rules) */
+body { padding-top: calc(var(--topbar-h) + var(--nav-h)) !important; }
+
+/* Hero: don't re-add navbar height inside hero */
+.mhero-img { padding: 22px 0 28px !important; }
+
+/* If you have responsive blocks that reassign --nav-h,
+   keep body padding synced at all breakpoints */
+@media (min-width: 1400px),
+(min-width: 1200px) and (max-width: 1399.98px),
+(min-width: 992px) and (max-width: 1199.98px),
+(min-width: 768px) and (max-width: 991.98px),
+(max-width: 767.98px) {
+  body { padding-top: calc(var(--topbar-h) + var(--nav-h)) !important; }
+}
+
+/* Optional: if you still want a taller hero, bump the min height */
+:root{ --hero-min: 60vh; --hero-min-lg: 72vh; }
 
 /* =========================
    Navbar (copy into contact.css)
@@ -116,7 +139,7 @@ body { padding-top: calc(var(--topbar-h) + var(--nav-h)); }
 :root { --nav-h: 76px; }
 
 /* Ensure page content clears the fixed navbar */
-body { padding-top: var(--nav-h); }
+/* body { padding-top: var(--nav-h); } */
 
 /* Base navbar */
 .navbar {
