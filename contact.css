@@ -19,31 +19,41 @@ body{
 .container{ width:min(var(--container-w), 92%); margin-inline:auto; }
 .section{ padding: clamp(48px, 6vw, 96px) 0; }
 /* =========================
-   TOPBAR — Loya Gold Premium
+   TOPBAR — Loya Gold Premium (Responsive)
    ========================= */
 
-/* Variables */
-:root {
+/* ---- Tokens / Fallbacks ---- */
+:root{
   --topbar-h: 44px;
-  --gold-1: #d4af37;      /* bright gold */
-  --gold-2: #c5a12f;      /* warm gold */
-  --gold-gloss: rgba(255,255,255,0.25);
-  --ink: #111;
+  --nav-h: 56px;               /* fallback if your navbar doesn't set it */
+  --gold-1: #d4af37;           /* bright gold */
+  --gold-2: #c5a12f;           /* warm gold */
+  --ink: #0c0c0c;
+  --ink-weak: rgba(0,0,0,.85);
+  --ink-muted: rgba(0,0,0,.6);
+  --hover-bg: rgba(0,0,0,.05);
 }
-@media (max-width: 768px) {
-  :root { --topbar-h: 40px; }
+@media (max-width: 768px){ :root{ --topbar-h: 40px; }}
+
+/* Respect iOS notch safe area */
+:root{ --safe-top: env(safe-area-inset-top, 0px); }
+
+/* Page offset for fixed navbar beneath topbar */
+body{
+  padding-top: calc(var(--safe-top) + var(--topbar-h) + var(--nav-h));
+}
+.navbar.fixed-top{
+  top: calc(var(--safe-top) + var(--topbar-h));
 }
 
-/* Adjust layout for fixed navbar below */
-body { padding-top: calc(var(--topbar-h) + var(--nav-h)); }
-.navbar.fixed-top { top: var(--topbar-h); }
-
-/* Topbar base */
-.topbar {
+/* ---- Base ---- */
+.topbar{
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: var(--topbar-h);
+  height: calc(var(--safe-top) + var(--topbar-h));
+  padding-top: var(--safe-top);
   z-index: 1031;
+  display: block;
   background: linear-gradient(180deg, var(--gold-1), var(--gold-2));
   color: var(--ink);
   font-size: 0.94rem;
@@ -52,81 +62,147 @@ body { padding-top: calc(var(--topbar-h) + var(--nav-h)); }
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Premium highlight gloss (subtle sheen) */
-.topbar::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, var(--gold-gloss), transparent 45%);
-  mix-blend-mode: soft-light;
-  pointer-events: none;
+/* Tone (home/menu alignment override) */
+#topbar.topbar{
+  background: linear-gradient(180deg, var(--brand-gold) 0%, #c9bd83 100%) !important;
+  color: var(--ink) !important;
+  border-bottom-color: rgba(0,0,0,.12) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,.15) !important;
 }
 
-/* Layout */
-.topbar .topbar-wrap {
-  height: 100%;
-  display: flex;
+/* Remove glossy overlay from earlier version */
+#topbar.topbar::after{ content:none !important; }
+
+/* ---- Layout ---- */
+.topbar .topbar-wrap{
+  height: calc(var(--topbar-h));
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
 }
 
-/* Left Side (Phone + Email) */
-.tb-left {
-  display: flex;
+/* Left & Right clusters */
+.tb-left, .tb-right{
+  display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-width: 0; /* allow flex children to truncate */
 }
 
-/* Separator (| symbol) */
-.tb-sep {
-  color: #000;
-  opacity: 0.6;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-/* Link styles */
-.tb-link {
+/* Links */
+.tb-link{
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #000;
+  color: var(--ink-weak);
   text-decoration: none;
-  transition: color 0.25s ease, transform 0.2s ease, background-color 0.2s ease;
-  padding: 4px 6px;
-  border-radius: 6px;
+  transition: color .2s ease, transform .15s ease, background-color .2s ease;
+  padding: 4px 8px;
+  border-radius: 8px;
+  line-height: 1;
+  max-width: 100%;
 }
-.tb-link i {
-  font-size: 0.9rem;
-  color: #000;
-  opacity: 0.85;
-  transition: transform 0.2s ease, color 0.25s ease;
+.tb-link i{
+  font-size: 0.95rem;
+  color: var(--ink-weak);
+  opacity: 0.95;
+  transition: transform .15s ease, color .2s ease;
+  flex: 0 0 auto;
+}
+.tb-link .tb-text{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .tb-link:hover,
-.tb-link:focus-visible {
-  color: #111;
-  background: rgba(0,0,0,0.05);
+.tb-link:focus-visible{
+  color: var(--ink);
+  background: var(--hover-bg);
   transform: translateY(-1px);
+  outline: none;
 }
-.tb-link:hover i {
-  color: #111;
-  transform: scale(1.1);
-}
-
-/* Right Side (Book + Order Links) */
-.tb-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.tb-link:hover i,
+.tb-link:focus-visible i{
+  color: var(--ink);
+  transform: scale(1.06);
 }
 
-/* Responsive */
-@media (max-width: 575.98px) {
-  .tb-text { display: none; }
-  .tb-sep { opacity: 0.5; }
-  .tb-link { padding: 6px; font-size: 0.88rem; }
+/* Separator */
+.tb-sep{
+  color: var(--ink-muted);
+  font-weight: 700;
+  font-size: 0.95rem;
+  opacity: .7;
 }
+
+/* ---- Responsiveness ---- */
+
+/* xs:  <576px  → show icons only, keep hit targets comfy */
+@media (max-width: 575.98px){
+  .tb-text{ display: none; }
+  .tb-sep{ display: none; }
+  .tb-link{ padding: 8px; font-size: .9rem; }
+  .tb-left, .tb-right{ gap: 6px; }
+}
+
+/* sm:  ≥576px & <768px → allow some text but truncate aggressively */
+@media (min-width: 576px) and (max-width: 767.98px){
+  .tb-text{ max-width: 140px; }
+}
+
+/* md:  ≥768px & <992px → comfortable spacing */
+@media (min-width: 768px) and (max-width: 991.98px){
+  .tb-left, .tb-right{ gap: 10px; }
+  .tb-text{ max-width: 220px; }
+}
+
+/* lg+: ≥992px → full text */
+@media (min-width: 992px){
+  .tb-text{ max-width: 360px; }
+}
+
+/* Very narrow devices in landscape: reduce font slightly */
+@media (max-height: 420px) and (orientation: landscape){
+  #topbar{ font-size: .88rem; }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce){
+  .tb-link,
+  .tb-link i{ transition: none; }
+}
+
+/* ---- Strong contrast mode fallback ---- */
+@media (forced-colors: active){
+  #topbar{
+    background: Canvas;
+    color: CanvasText;
+    border-bottom: 1px solid CanvasText;
+  }
+  .tb-link{ forced-color-adjust: auto; }
+}
+/* ===== HOME PAGE TOPBAR → match menu page gold (override) ===== */
+#topbar.topbar{
+  /* use the menu-page style: darker/richer gold with no bright fade */
+  background: linear-gradient(180deg, #c9a32a 0%, #b89122 100%) !important;
+  /* or if your menu page uses a solid brand gold, use this instead: */
+  /* background: #c9a32a !important; */
+
+  color: #111 !important;
+  border-bottom-color: rgba(0,0,0,.12) !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,.15) !important;
+}
+
+/* remove the glossy overlay that lightens the home bar */
+#topbar.topbar::after{ content:none !important; }
+
+/* link + separator tone, consistent with menu */
+#topbar .tb-link,
+#topbar .tb-link i{ color:#000 !important; opacity:.95; }
+#topbar .tb-sep{ color:#000 !important; opacity:.6; }
+#topbar .tb-link:hover{ color:#111 !important; }
+
 /* keep this at the very end of contact.css */
 body { padding-top: calc(var(--topbar-h) + var(--nav-h)) !important; }
 .navbar.fixed-top { top: var(--topbar-h) !important; }
