@@ -457,3 +457,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   io.observe(banner);
 });
+// ===== NAVBAR ACTIVE LINK HANDLER =====
+// Automatically highlights the current page link in the navbar
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".navbar .nav-link");
+
+  // Get current page filename (e.g., 'contact.html')
+  let path = window.location.pathname.split("/").pop();
+  if (!path || path === "") path = "index.html"; // default to home
+
+  links.forEach(link => {
+    const href = link.getAttribute("href") || "";
+    const target = href.split("/").pop();
+
+    // Clear existing actives first
+    link.classList.remove("active");
+
+    // Add 'active' if this link matches the current page
+    if (
+      (path === "index.html" && (target === "index.html" || target === "" || target === "#")) ||
+      target === path
+    ) {
+      link.classList.add("active");
+    }
+  });
+});

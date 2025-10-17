@@ -1,4 +1,114 @@
 /* =========================
+   TOPBAR — Loya Gold Premium
+   ========================= */
+
+/* Variables */
+:root {
+  --topbar-h: 44px;
+  --gold-1: #d4af37;      /* bright gold */
+  --gold-2: #c5a12f;      /* warm gold */
+  --gold-gloss: rgba(255,255,255,0.25);
+  --ink: #111;
+}
+@media (max-width: 768px) {
+  :root { --topbar-h: 40px; }
+}
+
+/* Adjust layout for fixed navbar below */
+body { padding-top: calc(var(--topbar-h) + var(--nav-h)); }
+.navbar.fixed-top { top: var(--topbar-h); }
+
+/* Topbar base */
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--topbar-h);
+  z-index: 1031;
+  background: linear-gradient(180deg, var(--gold-1), var(--gold-2));
+  color: var(--ink);
+  font-size: 0.94rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Premium highlight gloss (subtle sheen) */
+.topbar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, var(--gold-gloss), transparent 45%);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+/* Layout */
+.topbar .topbar-wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Left Side (Phone + Email) */
+.tb-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Separator (| symbol) */
+.tb-sep {
+  color: #000;
+  opacity: 0.6;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Link styles */
+.tb-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #000;
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.2s ease, background-color 0.2s ease;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+.tb-link i {
+  font-size: 0.9rem;
+  color: #000;
+  opacity: 0.85;
+  transition: transform 0.2s ease, color 0.25s ease;
+}
+.tb-link:hover,
+.tb-link:focus-visible {
+  color: #111;
+  background: rgba(0,0,0,0.05);
+  transform: translateY(-1px);
+}
+.tb-link:hover i {
+  color: #111;
+  transform: scale(1.1);
+}
+
+/* Right Side (Book + Order Links) */
+.tb-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Responsive */
+@media (max-width: 575.98px) {
+  .tb-text { display: none; }
+  .tb-sep { opacity: 0.5; }
+  .tb-link { padding: 6px; font-size: 0.88rem; }
+}
+
+/* =========================
    Navbar (copy into contact.css)
    ========================= */
 
