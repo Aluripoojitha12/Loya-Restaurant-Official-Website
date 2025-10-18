@@ -2081,6 +2081,13 @@ footer.footer .decor-bottom-left{
 @media (max-width: 575.98px){
   footer.footer .footer-decor{ display:none; } /* avoid any overlap on small screens */
 }
+/* ==== Footer Background Image ==== */
+footer.footer {
+  background:
+    radial-gradient(120% 120% at 70% 50%, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 80%),
+    url("assets/footerbg.png") center center / cover no-repeat;
+  background-attachment: fixed; /* gives elegant parallax feel */
+}
 
 /* ===== Scroll reveals (global) ===== */
 @media (prefers-reduced-motion: no-preference) {
