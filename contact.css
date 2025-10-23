@@ -451,114 +451,216 @@ footer.footer {
 
   /* decor sizing & safe offsets */
   --decor-tr-w: clamp(96px, 12vw, 160px);
-  --decor-tr-top: -44px;     /* higher so it doesn’t touch titles */
+  --decor-tr-top: -44px;
   --decor-tr-right: 28px;
 
   --decor-bl-w: clamp(90px, 11vw, 140px);
-  --decor-bl-bottom: 92px;   /* higher so it clears © line */
-  --decor-bl-left: 32px;
+  --decor-bl-bottom: 18px;
+  --decor-bl-left: 12px;
+
+  /* single place to control column gap */
+  --col-gap: 36px;
 
   background: #0a0a0a;
   color: #fff;
   padding: 70px 0 20px;
   position: relative;
   overflow: hidden;
+
+  /* ==== Background image ==== */
+  background:
+    radial-gradient(120% 120% at 70% 50%, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.80) 80%),
+    url("assets/footerbg.png") center center / cover no-repeat;
+  background-attachment: fixed;
 }
 
-footer.footer .footer-top { position: relative; z-index: 2; } /* content above decor */
+/* content above decor */
+footer.footer .footer-top { position: relative; z-index: 1; }
 
-footer.footer .footer-grid {
+/* ---- 4 columns: 1|2|3 packed left, 4th is flexible spacer ---- */
+footer.footer .footer-grid{
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 36px;
+  /* first 3 size to content; last one eats the remaining width */
+  grid-template-columns:
+    fit-content(420px)  /* Col 1: brand/about */
+    fit-content(260px)  /* Col 2: quick links */
+    fit-content(420px)  /* Col 3: contact */
+    1fr;                /* Col 4: empty spacer for BG image */
+  column-gap: 40px;     /* SAME gap between 1↔2 and 2↔3 */
+  align-items: start;
+  justify-content: start; /* ensure no space-between stretching */
 }
-footer.footer .footer-col { min-width: 220px; }
 
-/* Text + Titles */
-footer.footer .footer-logo { font-size: 1.9rem; color: var(--brand-gold); margin-bottom: 16px; }
+/* keep the 4th column invisible but reserving space */
+footer.footer .footer-col--empty{
+  visibility: hidden;
+  pointer-events: none;
+  min-height: 1px;
+}
+
+/* (optional) guardrails so cols don't shrink too small */
+footer.footer .footer-col{ min-width: 220px; }
+
+/* Responsive */
+@media (max-width: 991.98px){
+  footer.footer .footer-grid{
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    column-gap: 32px;
+  }
+}
+@media (max-width: 575.98px){
+  footer.footer .footer-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ====== Type & Titles ====== */
+footer.footer .footer-logo {
+  font-size: 1.9rem;
+  color: var(--brand-gold);
+  margin-bottom: 16px;
+}
 footer.footer .footer-logo span { color: #fff; font-weight: 400; }
-footer.footer .footer-about { color: #cfcfcf; line-height: 1.65; margin-bottom: 18px; }
 
-footer.footer .footer-title { font-size: 1.15rem; color: var(--brand-gold); margin-bottom: 14px; position: relative; }
-footer.footer .footer-title::after { content: ""; display: block; width: 44px; height: 2px; background: var(--brand-gold); margin-top: 6px; }
+footer.footer .footer-about {
+  color: #cfcfcf;
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
 
-/* Links + Contact */
+footer.footer .footer-title {
+  font-size: 1.15rem;
+  color: var(--brand-gold);
+  margin-bottom: 14px;
+  position: relative;
+}
+footer.footer .footer-title::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 2px;
+  background: var(--brand-gold);
+  margin-top: 6px;
+}
+
+/* ====== Lists / Links / Contact ====== */
 footer.footer .footer-links,
 footer.footer .footer-hours,
-footer.footer .footer-contact { list-style: none; margin: 0; padding: 0; }
-
+footer.footer .footer-contact{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 footer.footer .footer-links li,
 footer.footer .footer-hours li,
-footer.footer .footer-contact li { margin-bottom: 10px; color: #bdbdbd; font-size: .97rem; }
-
+footer.footer .footer-contact li{
+  margin-bottom: 10px;
+  color: #bdbdbd;
+  font-size: .97rem;
+}
 footer.footer .footer-links a,
-footer.footer .footer-contact a { color: #bdbdbd; text-decoration: none; transition: color .2s, opacity .2s; }
+footer.footer .footer-contact a{
+  color: #bdbdbd;
+  text-decoration: none;
+  transition: color .2s, opacity .2s;
+}
 footer.footer .footer-links a:hover,
-footer.footer .footer-contact a:hover { color: var(--brand-gold); }
+footer.footer .footer-contact a:hover{
+  color: var(--brand-gold);
+}
+footer.footer .footer-contact i{
+  margin-right: 8px;
+  color: var(--brand-gold);
+}
 
-footer.footer .footer-contact i { margin-right: 8px; color: var(--brand-gold); }
-
-/* Social Icons */
-footer.footer .footer-social { margin-top: 14px; }
+/* ====== Social ====== */
+footer.footer .footer-social{ margin-top: 14px; }
 footer.footer .footer-social a{
-  display:inline-flex; align-items:center; justify-content:center;
-  width:40px; height:40px; border:1px solid rgba(215,198,133,.35);
-  border-radius:999px; margin-right:10px; color:#fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border: 1px solid rgba(215,198,133,.35);
+  border-radius: 999px;
+  margin-right: 10px;
+  color: #fff;
   transition: transform .2s, border-color .2s, color .2s;
+  text-decoration: none !important;
 }
-footer.footer .footer-social a:hover { transform: translateY(-3px); border-color: var(--brand-gold); color: var(--brand-gold); }
-
-/* Bottom Bar */
-footer.footer .footer-bottom{
-  margin-top:50px; padding-top:16px; text-align:center; font-size:.92rem; color:#9a9a9a;
-  border-top:1px solid rgba(255,255,255,.1);
+footer.footer .footer-social a:hover{
+  transform: translateY(-3px);
+  border-color: var(--brand-gold);
+  color: var(--brand-gold);
 }
 
-/* Decor Images (isolated) */
+/* ====== © bar ====== */
+footer.footer .footer-legal{
+  margin-top: 32px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding: 16px 0 4px;
+}
+footer.footer .footer-legal p{
+  margin: 0;
+  text-align: center;
+  color: #9a9a9a;
+  font-size: .95rem;
+}
+
+/* ====== Decor ====== */
 footer.footer .footer-decor{
-  position:absolute; z-index:1; /* behind .footer-top (z=2) */
-  pointer-events:none; user-select:none; opacity:.92; object-fit:contain;
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  opacity: .92;
+  object-fit: contain;
   filter: drop-shadow(0 6px 18px rgba(0,0,0,.45));
   animation: footerBlinkGlow 1.6s ease-in-out infinite;
 }
-
-/* Top-right */
 footer.footer .decor-top-right{
   width: var(--decor-tr-w);
   top: var(--decor-tr-top);
   right: var(--decor-tr-right);
 }
-
-/* Bottom-left */
 footer.footer .decor-bottom-left{
   width: var(--decor-bl-w);
   left: var(--decor-bl-left);
   bottom: var(--decor-bl-bottom);
-  animation-delay: .25s; /* de-sync blink */
+  animation-delay: .25s;
 }
 
-/* Animation (unique name) */
+/* left safe gutter for capsicum */
+@media (min-width: 992px){
+  footer.footer .footer-top{
+    padding-left: calc(var(--decor-bl-left) + (var(--decor-bl-w) * 0.60) + 24px);
+  }
+}
+
+/* ====== Anim / reduced motion ====== */
 @keyframes footerBlinkGlow{
-  0%   { opacity:.45; transform: scale(.97); filter: drop-shadow(0 8px 20px rgba(215,198,133,.25)); }
-  50%  { opacity:1;   transform: scale(1.03); filter: drop-shadow(0 10px 30px rgba(215,198,133,.55)); }
-  100% { opacity:.45; transform: scale(.97); filter: drop-shadow(0 8px 20px rgba(215,198,133,.25)); }
+  0%{ opacity:.45; transform:scale(.97); filter:drop-shadow(0 8px 20px rgba(215,198,133,.25)); }
+  50%{ opacity:1; transform:scale(1.03); filter:drop-shadow(0 10px 30px rgba(215,198,133,.55)); }
+  100%{ opacity:.45; transform:scale(.97); filter:drop-shadow(0 8px 20px rgba(215,198,133,.25)); }
 }
-
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   footer.footer .footer-decor{ animation:none; }
 }
 
-/* Responsive (still isolated) */
+/* ====== Tuned responsive offsets ====== */
 @media (max-width: 1200px){
-  footer.footer { --decor-tr-right: 20px; --decor-bl-left: 24px; }
+  footer.footer { --decor-tr-right: 20px; }
 }
 @media (max-width: 991.98px){
-  footer.footer { --decor-tr-top: -36px; --decor-bl-bottom: 84px; }
+  footer.footer { --decor-tr-top: -36px; }
 }
 @media (max-width: 767.98px){
-  footer.footer { --decor-tr-top: -28px; --decor-tr-right: 16px; --decor-bl-left: 18px; --decor-bl-bottom: 78px; }
+  footer.footer {
+    --decor-tr-top: -28px;
+    --decor-tr-right: 16px;
+    --decor-bl-left: 18px;
+    --decor-bl-bottom: 18px;
+  }
 }
 @media (max-width: 575.98px){
-  footer.footer .footer-decor{ display:none; } /* avoid any overlap on small screens */
+  footer.footer .footer-decor{ display:none; }
 }
