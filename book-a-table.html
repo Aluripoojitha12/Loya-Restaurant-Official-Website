@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book a Table</title>
+
+  <!-- Fonts (rounded headline + clean body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (moved to head for icons in topbar) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Page CSS -->
+  <link rel="stylesheet" href="book-a-table.css" />
+</head>
+<body>
+  <!-- ================= TOPBAR (Loya Gold) ================= -->
+  <div id="topbar" class="topbar" role="banner" aria-label="Site topbar">
+    <div class="container-fluid px-3 topbar-wrap">
+      <!-- Left: Contact Info -->
+      <div class="tb-left">
+        <a class="tb-link" href="tel:+35316949516" aria-label="Call Loya Restaurant">
+          <i class="fa-solid fa-phone"></i><span class="tb-text">+353 1 694 9516</span>
+        </a>
+        <span class="tb-sep" aria-hidden="true">|</span>
+        <a class="tb-link" href="mailto:hello@loya.ie" aria-label="Email Loya Restaurant">
+          <i class="fa-solid fa-envelope"></i><span class="tb-text">hello@loya.ie</span>
+        </a>
+      </div>
+
+      <!-- Right: Actions -->
+      <div class="tb-right">
+        <a class="tb-link" href="/book-a-table.html" aria-label="Book a table">
+          <i class="fa-solid fa-chair"></i><span class="tb-text">Book a table</span>
+        </a>
+        <span class="tb-sep" aria-hidden="true">|</span>
+        <a class="tb-link" href="/order" aria-label="Order online">
+          <i class="fa-solid fa-bag-shopping"></i><span class="tb-text">Online Order</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN NAVBAR ================= -->
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark bg-black fixed-top">
+    <div class="container-fluid px-3">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="assets/Logo.png" alt="Loya Restaurant" class="logo-img" />
+      </a>
+
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks"
+              aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div id="navLinks" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="ba-hero" id="hero">
+    <div class="ba-wrap">
+      <div class="ba-left">
+        <h1 class="ba-title">
+          Do You Have Any Dinner Plan Today?<br />
+          <span>Reserve Your Table</span>
+        </h1>
+
+        <p class="ba-sub">
+          Make online reservations, read restaurant reviews from diners, and earn
+          points towards free meals. OpenTable is a real-time online reservation.
+        </p>
+
+        <button id="reserveBtn" class="ba-cta" type="button" aria-label="Make Reservation">
+          Make Reservation
+        </button>
+        <div class="ba-cta-shadow" aria-hidden="true"></div>
+      </div>
+
+      <div class="ba-right">
+        <!-- Concentric ring decor -->
+        <div class="ba-ring">
+          <img src="assets/images/dish-bowl.png" alt="Signature Dish" class="ba-dish" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <!-- decorative images -->
+    <img class="footer-decor decor-top-right" src="assets/decors/pan.png" alt="" aria-hidden="true" />
+    <img class="footer-decor decor-bottom-left" src="assets/decors/capsicum.png" alt="" aria-hidden="true" />
+
+    <div class="container footer-top">
+      <div class="footer-card">
+        <div class="footer-grid">
+          <!-- Col 1 -->
+          <div class="footer-col">
+            <h3 class="footer-logo">Loya <span>Restaurant</span></h3>
+            <p class="footer-about">
+              Experience fine dining with a modern twist. Seasonal flavors, curated wines, and unforgettable ambience.
+            </p>
+            <div class="footer-social" aria-label="Social links">
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <!-- Col 2 -->
+          <div class="footer-col">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="menu.html">Our Menu</a></li>
+              <li><a href="book-a-table.html">Reservations</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 3 -->
+          <div class="footer-col">
+            <h4 class="footer-title">Contact</h4>
+            <ul class="footer-contact">
+              <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, City Center</li>
+              <li><i class="fas fa-phone-alt"></i> <a href="tel:+1234567890">+1 (234) 567-890</a></li>
+              <li><i class="fas fa-envelope"></i> <a href="mailto:hello@loyarestaurant.com">hello@loyarestaurant.com</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4 (empty to expose right-side BG image) -->
+          <div class="footer-col footer-col--empty" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- © bar -->
+    <div class="footer-legal" aria-label="Legal">
+      <div class="container">
+        <p>© 2025 Loya Restaurant. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS + page script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="book-a-table.js"></script>
+</body>
+</html>
